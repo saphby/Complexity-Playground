@@ -24,7 +24,5 @@ std::vector<int> inputGenerator(int size, bool isSort){
 
 int main() {
     srand(time(0));
-    inputGenerator(5, true);
-    inputGenerator(5, false);
     return 0;
 }
