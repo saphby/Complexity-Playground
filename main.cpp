@@ -14,8 +14,7 @@ std::vector<int> inputGenerator(int size, bool isSort){
         }
     } else {
         for (int i = 0; i < size; i++) {
-            container.push_back(rand() % 101);
-            std::cout << container[i] << std::endl; 
+            container.push_back(rand() % 101); 
         }
 
     }
