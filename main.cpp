@@ -5,7 +5,7 @@
 #include <ctime>
 #include <chrono>
 
-std::vector<int> inputGenerator(int size, bool isSort){
+std::vector<int> inputGenerator(int size, bool isSort) {
     std::vector<int> container;
     container.reserve(size);
 
@@ -20,6 +20,15 @@ std::vector<int> inputGenerator(int size, bool isSort){
 
     }
     return container;
+}
+
+int linearSearch(int target, const std::vector<int>& data) {    
+    for (size_t i = 0; i < data.size(); i++) {
+        if (data[i] == target) {
+            return i;
+        } 
+    }
+    return -1;
 }
 
 int main() {
