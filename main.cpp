@@ -33,9 +33,16 @@ int linearSearch(int target, const std::vector<int>& data) {
 
 int main() {
     srand(time(0));
-    auto startTime = std::chrono::steady_clock::now();
-    auto endTime = std::chrono::steady_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime).count();
-    std::cout << "Execution Time: " << duration << " microseconds" << std::endl;
+    std::vector<int> linearSearchInput = inputGenerator(10000000, true);
+    long long totalTime = 0;
+    for (int i = 0; i < 50; i++) {
+        auto startTime = std::chrono::steady_clock::now();
+        linearSearch(10000001, linearSearchInput);
+        auto endTime = std::chrono::steady_clock::now();
+        auto duration = std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime).count();
+        totalTime += duration;
+    }
+    long long averageTime = totalTime / 50;
+    std::cout << "Execution Time: " << averageTime << " microseconds" << std::endl;
     return 0;
 }
