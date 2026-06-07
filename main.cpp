@@ -47,7 +47,7 @@ int binarySearch(int target, const std::vector<int>& data) {
     int left = 0;
     int right = data.size() - 1;
     while(left <= right) {
-        int mid = left + (right - left) /2;
+        int mid = left + (right - left) / 2;
         if (target == data[mid]) {
             return mid;
         } else if (target > data[mid]) {
@@ -60,18 +60,73 @@ int binarySearch(int target, const std::vector<int>& data) {
     return -1;
 }
 
+void merge(std::vector<int>& data, int left, int mid, int right) {
+    int leftSize = (mid - left) + 1;
+    int rightSize = right - mid;
+
+    std::vector<int> leftVector(leftSize);
+    std::vector<int> rightVector(rightSize);
+
+    for (int i = 0; i < leftSize; i++) {
+        leftVector[i] = data[left + i];
+    }
+
+    for (int j = 0; j < rightSize; j++) {
+        rightVector[j] = data[(mid + 1) + j];
+    }
+
+    int i = 0;
+    int j = 0;
+    int k = left;
+
+    while (i < leftSize && j < rightSize) {
+        if (leftVector[i] <= rightVector[j]) {
+            data[k] = leftVector[i];
+            i++;
+        } else {
+            data[k] = rightVector[j];
+            j++;
+        }
+
+        k++;
+    }
+
+    while (i < leftSize) {
+        data[k] = leftVector[i];
+        i++;
+        k++;
+    }
+
+    while (j < rightSize) {
+        data[k] = rightVector[j];
+        j++;
+        k++;
+    }
+}
+
+void mergeSort(std::vector<int>& data, int left, int right) {
+    if (left >= right) {
+        return;
+    }
+
+    int mid = left + (right - left) / 2;
+    mergeSort(data, left, mid);
+    mergeSort(data, mid + 1, right);
+    merge(data, left, mid, right);
+}
+
 int main() {
     srand(time(0));
     long long totalTime = 0;
-    std::vector<int> testData = inputGenerator(100000000, true);
-    for (int i = 0; i < 50; i++) {
+    for (int i = 0; i < 5; i++) {
+        std::vector<int> testData = inputGenerator(10000000, false);
         auto startTime = std::chrono::steady_clock::now();
-        binarySearch(100000001, testData);
+        mergeSort(testData, 0, testData.size() - 1);
         auto endTime = std::chrono::steady_clock::now();
         auto duration = std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime).count();
         totalTime += duration;
     }
-    long long averageTime = totalTime / 50;
+    long long averageTime = totalTime / 5;
     std::cout << "Execution Time: " << averageTime << " microseconds" << std::endl;
     return 0;
 }
