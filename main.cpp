@@ -42,8 +42,8 @@ int main() {
                 std::cout << "\nRunning Linear Search Benchmark...\n";
                 std::cout << std::left
                         << std::setw(18) << "Size"
-                        << std::setw(22) << "Empirical (us)"
-                        << "Theoretical (us)\n";
+                        << std::setw(22) << "Empirical (microseconds)"
+                        << "Theoretical (microseconds)\n";
                 std::cout << std::string(58, '-') << "\n";
 
                 long long baseTime = 0;
@@ -77,8 +77,8 @@ int main() {
                 std::cout << "\nRunning Binary Search Benchmark...\n";
                 std::cout << std::left
                         << std::setw(18) << "Size"
-                        << std::setw(22) << "Empirical (us)"
-                        << "Theoretical (us)\n";
+                        << std::setw(22) << "Empirical (nanoseconds)"
+                        << "Theoretical (nanoseconds)\n";
                 std::cout << std::string(58, '-') << "\n";
 
                 long long baseTime = 0;
@@ -114,8 +114,8 @@ int main() {
                 std::cout << "\nRunning Bubble Sort Benchmark...\n";
                 std::cout << std::left
                         << std::setw(18) << "Size"
-                        << std::setw(22) << "Empirical (us)"
-                        << "Theoretical (us)\n";
+                        << std::setw(22) << "Empirical (microseconds)"
+                        << "Theoretical (microseconds)\n";
                 std::cout << std::string(58, '-') << "\n";
 
                 long long baseTime = 0;
@@ -150,8 +150,8 @@ int main() {
             std::cout << "\nRunning Merge Sort Benchmark...\n"; 
             std::cout << std::left
                         << std::setw(18) << "Size"
-                        << std::setw(22) << "Empirical (us)"
-                        << "Theoretical (us)\n";
+                        << std::setw(22) << "Empirical (microseconds)"
+                        << "Theoretical (microseconds)\n";
                 std::cout << std::string(58, '-') << "\n";
 
                 long long baseTime = 0;
