@@ -43,13 +43,30 @@ void bubbleSort(std::vector<int>& data) {
     }
 }
 
+int binarySearch(int target, const std::vector<int>& data) {
+    int left = 0;
+    int right = data.size() - 1;
+    while(left <= right) {
+        int mid = left + (right - left) /2;
+        if (target == data[mid]) {
+            return mid;
+        } else if (target > data[mid]) {
+            left = mid + 1;
+        } else if (target < data[mid]) {
+            right = mid - 1;
+        }
+    }
+
+    return -1;
+}
+
 int main() {
     srand(time(0));
     long long totalTime = 0;
+    std::vector<int> testData = inputGenerator(100000000, true);
     for (int i = 0; i < 50; i++) {
-        std::vector<int> bubbleSortInput = inputGenerator(10000, false);
         auto startTime = std::chrono::steady_clock::now();
-        bubbleSort(bubbleSortInput);
+        binarySearch(100000001, testData);
         auto endTime = std::chrono::steady_clock::now();
         auto duration = std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime).count();
         totalTime += duration;
