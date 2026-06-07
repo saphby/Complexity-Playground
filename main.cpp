@@ -20,7 +20,13 @@ int main() {
         std::cout << "4. Merge Sort O(n log n)\n";
         std::cout << "5. Exit\n";
         std::cout << "Select an engine (1-5): ";
-        std::cin >> choice;
+
+        if (!(std::cin >> choice)) {
+            std::cin.clear();
+            std::cin.ignore(1000, '\n');
+            std::cout << "Invalid input. Try again.\n";
+            continue;
+        }
 
         if (choice == 5) {
             std::cout << "Shutting down...\n";
@@ -66,10 +72,10 @@ int main() {
                                   
                 break;
 
-            case 3:
+            case 3: {
+                std::vector<int> bubbleSizes = {1000, 5000, 10000}; // Different Input Sizes for Bubble Sort as larger sizes(1,000,000) could lead to incredibly high compute times
                 std::cout << "\nRunning Bubble Sort Benchmark...\n";
-                std::cout << "Warning: 1M items on O(n^2) may take 15+ minutes...\n";
-                for (int size : testSizes) {    
+                for (int size : bubbleSizes) {    
         
                     std::vector<int> testData = inputGenerator(size, 2);           
                 
@@ -83,6 +89,7 @@ int main() {
                     std::cout << "Size: " << size << " items | Time: " << duration << " microseconds\n";
                 }    
                 break;
+            }
 
             case 4:
             std::cout << "\nRunning Merge Sort Benchmark...\n"; 
