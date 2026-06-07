@@ -3,18 +3,29 @@
 #include <vector>
 #include <ctime>
 
-std::vector<int> inputGenerator(int size, bool isSort) {
+std::vector<int> inputGenerator(int size, int mode) {
     std::vector<int> container;
     container.reserve(size);
 
-    if (isSort) {
-        for (int i = 0; i < size; i++) {
-            container.push_back(i + 1);           
+    switch (mode) {
+        case 1:
+            for (int i = 0; i < size; i++) {
+                container.push_back(i + 1);           
         }
-    } else {
+        break;
+
+        case 2:
+            for (int i = size; i > 0; i--) {
+                container.push_back(i);
+            }
+        break;
+
+        case 3:
         for (int i = 0; i < size; i++) {
-            container.push_back(rand() % 101); 
+            container.push_back(rand() % 10000);
+             
         }
+        break;
 
     }
     return container;

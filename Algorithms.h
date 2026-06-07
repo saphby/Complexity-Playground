@@ -3,7 +3,7 @@
 
 #include <vector>
 
-std::vector<int> inputGenerator(int size, bool isSort);
+std::vector<int> inputGenerator(int size, int mode);
 
 int linearSearch(int target, const std::vector<int>& data);
 int binarySearch(int target, const std::vector<int>& data);
